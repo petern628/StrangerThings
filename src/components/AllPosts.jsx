@@ -85,10 +85,11 @@ const AllPosts = ({ allPosts, setAllPosts }) => {
             />
 
             {allPosts.length ? (
-                allPosts.map(({ id, title, body }) => (
+                allPosts.map(({ id, title, description, price }) => (
                     <div key={id} className='post'>
                         <h3>{title}</h3>
-                        <p>{body}</p>
+                        <p>{description}</p>
+                        <p>{price}</p>
                     </div>
                 ))
             ) : (

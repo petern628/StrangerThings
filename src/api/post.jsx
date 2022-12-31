@@ -4,6 +4,7 @@ export const getAllPosts = async () => {
     try {
         const response = await fetch(`${APIURL}/posts`);
         const data = await response.json();
+        console.log(data)
         return data;
     } catch (error) {
         throw error;
@@ -18,7 +19,9 @@ export const createNewPost = async (post, token) => {
                 'Content-type': 'application/json; charset=UTF-8',
                 'Authorization': `Bearer ${token}`
             },
-            body: JSON.stringify(post),
+            body: JSON.stringify({
+                post: { title, description, price }
+            }),
         });
         const data = await response.json();
         console.log('data from create: ', data);

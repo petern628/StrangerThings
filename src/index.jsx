@@ -12,16 +12,18 @@ import {
 import { Header, AllPosts } from './components';
 import { getAllPosts } from './api/post';
 import './index.css'
+// import login from './components/AuthForm'
+// import register from './components/AuthForm'
+
 
 const App = () => {
     const [allPosts, setAllPosts] = useState([]);
-
+    const fetchAllPost = async () => {
+        const { data } = await getAllPosts();
+        setAllPosts(data.posts)
+    }
     useEffect(() => {
-        const setInitialData = async () => {
-            const fetchedPosts = await getAllPosts();
-            setAllPosts(fetchedPosts);
-        };
-        setInitialData();
+        fetchAllPost();
     }, []);
 
     return (
@@ -36,7 +38,8 @@ const router = createBrowserRouter(
     createRoutesFromElements(
         <>
             <Route path='/' element={<App />} />
-            <Route path='*' element={<Navigate replace to='/' />} />
+            {/* <Route path='/login' element={login} />
+            <Route path='/register' element={register} /> */}
         </>
     )
 );

@@ -19,7 +19,7 @@ export const authenticateUser = async (username, password, method) => {
         if (!result.data.token) {
             return;
         } else {
-            window.localStorage.setItem('strange-token', result.data.token);
+            window.localStorage.setItem('token', result.data.token);
 
             return await me();
         }
@@ -30,14 +30,14 @@ export const authenticateUser = async (username, password, method) => {
 
 export const me = async () => {
     try {
-        const token = window.localStorage.getItem('strange-token');
+        const token = window.localStorage.getItem('token');
 
         if (token) {
             const response = await fetch(`${APIURL}/users/me`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
-                    Authorization: `Bearer ${token}`,
+                    'Authorization': `Bearer ${token}`,
                 },
             });
 
