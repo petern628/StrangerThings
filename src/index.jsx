@@ -9,11 +9,10 @@ import {
     RouterProvider,
 } from 'react-router-dom';
 
+import { Signup, Login } from './components/AuthForm'
 import { Header, AllPosts } from './components';
 import { getAllPosts } from './api/post';
 import './index.css'
-// import login from './components/AuthForm'
-// import register from './components/AuthForm'
 
 
 const App = () => {
@@ -38,8 +37,9 @@ const router = createBrowserRouter(
     createRoutesFromElements(
         <>
             <Route path='/' element={<App />} />
-            {/* <Route path='/login' element={login} />
-            <Route path='/register' element={register} /> */}
+            <Route path='/login' element={Login} />
+            <Route path='/signup' element={Signup} />
+            <Route path='*' element={<Navigate replace to='/' />} />
         </>
     )
 );

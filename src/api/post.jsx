@@ -15,13 +15,11 @@ export const createNewPost = async (post, token) => {
     try {
         const response = await fetch(`${APIURL}/posts`, {
             method: 'POST',
+            body: JSON.stringify(post),
             headers: {
                 'Content-type': 'application/json; charset=UTF-8',
                 'Authorization': `Bearer ${token}`
             },
-            body: JSON.stringify({
-                post: { title, description, price }
-            }),
         });
         const data = await response.json();
         console.log('data from create: ', data);

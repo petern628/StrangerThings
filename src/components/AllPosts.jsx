@@ -5,7 +5,6 @@ import {
     updatePartialPost,
     deletePost,
 } from '../api/post';
-import './AllPosts.css';
 import Button from './Button.jsx';
 
 const AllPosts = ({ allPosts, setAllPosts }) => {
@@ -14,8 +13,8 @@ const AllPosts = ({ allPosts, setAllPosts }) => {
     const postId3 = 3;
     const postToCreate = {
         title: 'Our New Post',
-        body: 'This post is mostly about the bestestest kitten, my Grim!',
-        userId: 1,
+        description: 'This post is mostly about the bestestest kitten, my Grim!',
+        price: 'free',
     };
     const postToCompletelyUpdate = {
         title: 'Our Updated Post with id: 1',
@@ -87,9 +86,8 @@ const AllPosts = ({ allPosts, setAllPosts }) => {
             {allPosts.length ? (
                 allPosts.map(({ id, title, description, price }) => (
                     <div key={id} className='post'>
-                        <h3>{title}</h3>
+                        <h3>{title} [{price}]</h3>
                         <p>{description}</p>
-                        <p>{price}</p>
                     </div>
                 ))
             ) : (

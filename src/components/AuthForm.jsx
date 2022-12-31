@@ -1,6 +1,7 @@
 import React from 'react';
 import { authenticateUser } from '../api/auth';
 import { Link } from 'react-router-dom';
+import Header from './Header';
 
 const AuthForm = ({ name, buttonName }) => {
     const handleSubmit = (event) => {
@@ -17,6 +18,7 @@ const AuthForm = ({ name, buttonName }) => {
 
     return (
         <div>
+            <Header />
             <form onSubmit={handleSubmit} name={name}>
                 <div>
                     <label htmlFor='username'>Username</label>
@@ -24,19 +26,19 @@ const AuthForm = ({ name, buttonName }) => {
                 </div>
                 <div>
                     <label htmlFor='password'>Password</label>
-                    <input type='text' name='password' />
+                    <input type='password' name='password' />
                 </div>
                 <button>{buttonName}</button>
+                {name === 'login' ? (
+                    <p>
+                        Not a user yet? <Link to='/signup'>Sign Up Here</Link>!
+                    </p>
+                ) : (
+                    <p>
+                        Alreay have an account? <Link to='/login'>Login Here</Link>!
+                    </p>
+                )}
             </form>
-            {name === 'login' ? (
-                <p>
-                    Not a user yet? <Link to='/signup'>Sign Up Here</Link>!
-                </p>
-            ) : (
-                <p>
-                    Alreay have an account? <Link to='/login'>Login Here</Link>!
-                </p>
-            )}
         </div>
     );
 };
