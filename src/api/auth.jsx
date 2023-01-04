@@ -53,11 +53,3 @@ export const me = async () => {
         console.error(error);
     }
 };
-
-export async function registerUser(user) {
-    return authenticateUser(user.name, user.password, "register");
-};
-
-export async function logIn(user) {
-    return authenticateUser(user.name, user.password, "login");
-};
