@@ -43,5 +43,5 @@ const AuthForm = ({ name, buttonName }) => {
     );
 };
 
-export const Login = <AuthForm name={'login'} buttonName={'Login'} />;
-export const Signup = <AuthForm name={'register'} buttonName={'Register'} />;
+export const LogIn = <AuthForm name={'login'} buttonName={'Login'} />;
+export const SignUp = <AuthForm name={'register'} buttonName={'Register'} />;

@@ -7,7 +7,6 @@ const Header = () => {
         <header>
             <h1>Welcome to Stranger's Things</h1>
             <Navbar />
-
         </header>
     );
 };

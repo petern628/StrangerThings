@@ -9,36 +9,22 @@ import {
     RouterProvider,
 } from 'react-router-dom';
 
-import { Signup, Login } from './components/AuthForm'
-import { Header, AllPosts } from './components';
-import { getAllPosts } from './api/post';
+import { SignUp, LogIn } from './components/AuthForm'
+import { Home } from './components';
 import './index.css'
 
 
 const App = () => {
-    const [allPosts, setAllPosts] = useState([]);
-    const fetchAllPost = async () => {
-        const { data } = await getAllPosts();
-        setAllPosts(data.posts)
-    }
-    useEffect(() => {
-        fetchAllPost();
-    }, []);
-
-    return (
-        <div id='App'>
-            <Header />
-            <AllPosts allPosts={allPosts} setAllPosts={setAllPosts} />
-        </div>
-    );
-};
+    return;
+}
 
 const router = createBrowserRouter(
     createRoutesFromElements(
         <>
-            <Route path='/' element={<App />} />
-            <Route path='/login' element={Login} />
-            <Route path='/signup' element={Signup} />
+            <Route path='/' element={<Home />} />
+            <Route path='/login' element={LogIn} />
+            {/* <Route path="/logout" element={Logout} /> */}
+            <Route path='/signup' element={SignUp} />
             <Route path='*' element={<Navigate replace to='/' />} />
         </>
     )
